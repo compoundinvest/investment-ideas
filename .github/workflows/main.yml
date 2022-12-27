@@ -1,12 +1,26 @@
-- name: Deploy Function
-  id: sls-func
-  uses: yc-actions/yc-sls-function@v2.3.0
-  with:
-    yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-    folder-id: "b1gavt7en80es8oo1hq2"
-    function-name: "get-investment-ideas"
-    runtime: "golang119"
-    memory: "128Mb"
-    entrypoint: "src/main.YandexCFHandler"
-    include: ./src
-    tags: ${{ GITHUB_SHA::6 }}
+name: Yandex Cloud function deployment
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+   build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy Function
+        id: sls-func
+        uses: yc-actions/yc-sls-function@v2
+        with:
+            yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+            folder-id: "b1gavt7en80es8oo1hq2"
+            function-name: "get-investment-ideas"
+            runtime: "golang119"
+            memory: "128Mb"
+            entrypoint: "src/main.YandexCFHandler"
+            include: ./src
