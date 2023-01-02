@@ -24,3 +24,5 @@ jobs:
                   memory: "128Mb"
                   entrypoint: "./main.YandexCFHandler"
                   include: ./
+                  exclude: |
+                      /.github/
