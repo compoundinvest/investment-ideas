@@ -22,5 +22,5 @@ jobs:
                   function-name: "get-investment-ideas"
                   runtime: "golang119"
                   memory: "128Mb"
-                  entrypoint: "/main.YandexCFHandler"
+                  entrypoint: "./main.YandexCFHandler"
                   include: ./
