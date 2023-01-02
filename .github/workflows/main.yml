@@ -25,4 +25,7 @@ jobs:
                   entrypoint: "./main.YandexCFHandler"
                   include: ./
                   exclude: |
-                      /.github/
+                      .github/**/*
+                      .git/**/*
+                      .git
+                      .github
