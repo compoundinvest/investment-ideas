@@ -3,19 +3,19 @@ package investmentideas
 import (
 	quote "compound/Core/Quotes/Common"
 	"fmt"
-	"time"
 )
 
 type SimpleQuote = quote.SimpleQuote
 
 type InvestmentIdea struct {
-	Ticker           string `json:"ticker"`
-	companyName      string
-	Currency         string `json:"currency"`
-	priceOnOpening   float64
-	TargetPrice      float64 `json:"targetPrice"`
-	Upside           float64 `json:"upside"`
-	openingDate      time.Time
+	Ticker string `json:"ticker"`
+	// companyName    string
+	Currency string `json:"currency"`
+	// priceOnOpening float64
+	TargetPrice  float64 `json:"targetPrice"`
+	Upside       float64 `json:"upside"`
+	CurrentQuote float64 `json:"currentQuote"`
+	// openingDate      time.Time
 	InvestmentThesis string `json:"thesis,omitempty"`
 }
 
