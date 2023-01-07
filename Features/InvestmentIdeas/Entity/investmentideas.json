@@ -20,12 +20,6 @@
             "risk": "low"
         },
         {
-            "ticker": "FTI",
-            "currency": "USD",
-            "targetPrice": 12,
-            "risk": "medium"
-        },
-        {
             "ticker": "NTNX",
             "currency": "USD",
             "targetPrice": 40,
