@@ -16,7 +16,7 @@ type InvestmentIdea struct {
 	TargetPrice      float64 `json:"targetPrice"`
 	Upside           float64 `json:"upside"`
 	openingDate      time.Time
-	investmentThesis string
+	InvestmentThesis string `json:"thesis"`
 }
 
 func (idea *InvestmentIdea) CalculateUpside(currentQuote SimpleQuote) {

@@ -5,7 +5,8 @@
             "ticker": "BABA",
             "currency": "USD",
             "targetPrice": 200,
-            "risk": "medium"
+            "risk": "medium",
+            "thesis": "Lorem ipsum so to speak."
         },
         {
             "ticker": "BIDU",
