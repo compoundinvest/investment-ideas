@@ -15,7 +15,6 @@ type Response struct {
 
 func main() {
 	//No need to perform any operations in main() because Yandex Cloud Function will use YandexCFHandler()
-
 }
 
 // Entry point for the Yandex Cloud Function
