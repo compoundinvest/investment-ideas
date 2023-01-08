@@ -52,8 +52,8 @@ func GetInvestmentIdeas() InvestmentIdeas {
 		quotes = append(quotes, moexQuotes...)
 	}()
 
-	ideas.CalculateUpsides(quotes)
-
 	waitGroup.Wait()
+
+	ideas.CalculateUpsides(quotes)
 	return ideas
 }
