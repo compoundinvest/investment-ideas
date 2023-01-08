@@ -3,20 +3,26 @@ package investmentideas
 import (
 	quote "compound/Core/Quotes/Common"
 	"fmt"
+	"time"
 )
 
 type SimpleQuote = quote.SimpleQuote
+type Time = time.Time
 
 type InvestmentIdea struct {
-	Ticker string `json:"ticker"`
-	// companyName    string
-	Currency string `json:"currency"`
-	// priceOnOpening float64
-	TargetPrice  float64 `json:"targetPrice"`
-	Upside       float64 `json:"upside"`
-	CurrentQuote float64 `json:"currentQuote"`
-	// openingDate      time.Time
-	InvestmentThesis string `json:"thesis,omitempty"`
+	Ticker           string  `json:"ticker"`
+	CompanyName      string  `json:"companyName"`
+	Currency         string  `json:"currency"`
+	TargetPrice      float64 `json:"targetPrice"`
+	Upside           float64 `json:"upside"`
+	PriceOnOpening   float64 `json:"priceOnOpening,omitempty"`
+	CurrentQuote     float64 `json:"currentQuote,omitempty"`
+	OpeningDate      Time    `json:"openingDate,omitempty"`
+	InvestmentThesis string  `json:"thesis,omitempty"`
+}
+
+func (idea *InvestmentIdea) SetQuote(currentQuote SimpleQuote) {
+	idea.CurrentQuote = currentQuote.Quote()
 }
 
 func (idea *InvestmentIdea) CalculateUpside(currentQuote SimpleQuote) {

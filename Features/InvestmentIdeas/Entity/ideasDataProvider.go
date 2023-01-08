@@ -1,13 +1,16 @@
 package investmentideas
 
 import (
+	moexapi "compound/Core/Quotes/moexapi"
+	yahooapi "compound/Core/Quotes/yahooapi"
 	"encoding/json"
 	"fmt"
 	"io"
 	"os"
+	"sync"
 )
 
-func GetLocalIdeasList() InvestmentIdeas {
+func getLocalIdeasList() InvestmentIdeas {
 	ideasFileContent, err := os.Open("Features/InvestmentIdeas/Entity/investmentideas.json")
 	if err != nil {
 		fmt.Printf("Error while attempting to read the investment ideas list file: %v", err)
@@ -21,7 +24,36 @@ func GetLocalIdeasList() InvestmentIdeas {
 	}
 
 	var ideas InvestmentIdeas
-	json.Unmarshal(byteValue, &ideas)
+	err = json.Unmarshal(byteValue, &ideas)
+	if err != nil {
+		fmt.Println("Unable to unmarshal the JSON containing the list of investment ideas: ", err)
+	}
 
+	return ideas
+}
+
+func GetInvestmentIdeas() InvestmentIdeas {
+	ideas := getLocalIdeasList()
+	waitGroup := &sync.WaitGroup{}
+
+	quotes := []moexapi.SimpleQuote{}
+
+	waitGroup.Add(1)
+	go func() {
+		defer waitGroup.Done()
+		yahooQuotes := yahooapi.FetchQuotes(ideas.TickersOfSpecificCurrency("USD"))
+		quotes = append(quotes, yahooQuotes...)
+	}()
+
+	waitGroup.Add(1)
+	go func() {
+		defer waitGroup.Done()
+		moexQuotes := moexapi.FetchQuotes(ideas.TickersOfSpecificCurrency("RUB"))
+		quotes = append(quotes, moexQuotes...)
+	}()
+
+	ideas.CalculateUpsides(quotes)
+
+	waitGroup.Wait()
 	return ideas
 }

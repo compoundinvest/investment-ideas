@@ -26,7 +26,7 @@ func (ideas *InvestmentIdeas) CalculateUpsides(quotes []SimpleQuote) {
 		if err != nil {
 			continue
 		}
-		ideas.Ideas[i].CurrentQuote = quote.Quote()
+		ideas.Ideas[i].SetQuote(quote)
 		ideas.Ideas[i].CalculateUpside(quote)
 	}
 	sort.Slice(ideas.Ideas, func(i, j int) bool {

@@ -10,7 +10,16 @@ import (
 
 type SimpleQuote = quote.SimpleQuote
 
-func FetchQuotes(tickers []string) []MoexQuote {
+func FetchQuotes(tickers []string) []SimpleQuote {
+	simpleQuotes := []quote.SimpleQuote{}
+
+	quotes := fetchQuotes(tickers)
+	simpleQuotes = append(simpleQuotes, quote.ConvertToSimpleQuote(quotes)...)
+
+	return simpleQuotes
+}
+
+func fetchQuotes(tickers []string) []MoexQuote {
 	quotesURL := "https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities.json?iss.meta=on&iss.only=marketdata&marketdata.columns=SECID,LAST,ISSUECAPITALIZATION"
 
 	response, err := http.Get(quotesURL)

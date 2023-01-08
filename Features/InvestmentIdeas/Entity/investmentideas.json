@@ -6,13 +6,17 @@
             "currency": "USD",
             "targetPrice": 200,
             "risk": "medium",
-            "thesis": "Lorem ipsum so to speak."
+            "thesis": "Lorem ipsum so to speak.",
+            "companyName": "Alibaba",
+            "openingDate": "2023-01-08T00:00:00.000Z",
+            "priceOnOpening": 100
         },
         {
             "ticker": "BIDU",
             "currency": "USD",
             "targetPrice": 230,
-            "risk": "medium"
+            "risk": "medium",
+            "companyName": "Baidu"
         },
         {
             "ticker": "SLB",
