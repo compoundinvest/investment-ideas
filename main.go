@@ -1,7 +1,7 @@
 package main
 
 import (
-	investmentideas "compound/Features/InvestmentIdeas/Entity"
+	investmentideas "compound/Features/InvestmentIdeas"
 	"encoding/json"
 )
 
@@ -12,7 +12,6 @@ type Response struct {
 
 func main() {
 	//No need to perform any operations in main() because Yandex Cloud Function will use YandexCFHandler()
-	YandexCFHandler()
 }
 
 // Entry point for the Yandex Cloud Function
