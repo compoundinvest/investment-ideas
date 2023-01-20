@@ -12,7 +12,7 @@ type Time = time.Time
 
 type InvestmentIdea struct {
 	Ticker           string  `json:"ticker"`
-	CompanyName      string  `json:"companyName"`
+	CompanyName      string  `json:"companyName,omitempty"`
 	Currency         string  `json:"currency"`
 	TargetPrice      float64 `json:"targetPrice"`
 	Upside           float64 `json:"upside"`
