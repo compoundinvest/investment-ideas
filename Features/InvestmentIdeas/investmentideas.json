@@ -232,12 +232,6 @@
             "currency": "RUB",
             "targetPrice": 3000,
             "risk": "low"
-        },
-        {
-            "ticker": "VET",
-            "currency": "USD",
-            "targetPrice": 35,
-            "risk": "medium"
         }
     ]
 }
