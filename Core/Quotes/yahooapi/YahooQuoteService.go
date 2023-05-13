@@ -11,7 +11,7 @@ import (
 type SimpleQuote = quote.SimpleQuote
 
 func fetchQuotes(tickers []string) []YahooQuote {
-	quotesURL := "https://query1.finance.yahoo.com/v7/finance/quote?symbols=" + strings.Join((tickers), ",")
+	quotesURL := "https://query1.finance.yahoo.com/v6/finance/quote?symbols=" + strings.Join((tickers), ",")
 
 	response, err := http.Get(quotesURL)
 	if err != nil {
