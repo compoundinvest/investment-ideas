@@ -1,10 +1,11 @@
 package investmentideas
 
 import (
-	quote "compound/Core/Quotes/Common"
 	"fmt"
 	"math"
 	"time"
+
+	quote "github.com/compoundinvest/invest-core/quote/entity"
 )
 
 type SimpleQuote = quote.SimpleQuote

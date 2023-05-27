@@ -1,8 +1,9 @@
 package main
 
 import (
-	investmentideas "compound/Features/InvestmentIdeas"
 	"encoding/json"
+
+	investmentideas "investmentideas/Features/InvestmentIdeas"
 )
 
 type Response struct {

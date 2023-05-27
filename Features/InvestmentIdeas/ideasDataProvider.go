@@ -1,13 +1,14 @@
 package investmentideas
 
 import (
-	moexapi "compound/Core/Quotes/moexapi"
-	yahooapi "compound/Core/Quotes/yahooapi"
 	"encoding/json"
 	"fmt"
 	"io"
 	"os"
 	"sync"
+
+	"github.com/compoundinvest/invest-core/quote/moexapi"
+	"github.com/compoundinvest/invest-core/quote/yahooapi"
 )
 
 func readIdeasFile() ([]byte, error) {
